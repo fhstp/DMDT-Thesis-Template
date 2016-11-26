@@ -1,18 +1,24 @@
-% ==========Template by Patrik Lechner, 2015=============
-% =============ptrk.lechner@gmail.com====================
-% No warranties whatsoever.
+% ========== Template by IC\M/T Institute of Creative\Media/Technologies =============
+% ==========  M. Wagner and K. Blumenstein, 2016         ============= 
+% ==========  Based on the LaTeX Thesis Template for the University of Applied Sciences St.Pölten by P. Lechner https://github.com/hrtlacek/ThesisTemplate-FH-StP        ============= 
 
-%Dokumentklasse
-\documentclass[a4paper,11pt]{scrreprt}
+
+%Dokumentklasse without end dot ;-)
+\documentclass[a4paper,11pt, numbers=noenddot]{scrreprt}
 \usepackage[left= 3.5cm,right = 3cm, bottom = 3.5 cm, top = 3 cm]{geometry}
 \usepackage[onehalfspacing]{setspace}
+
+% ============= Settings for the Work =============
+
+\include{Settings}
+
 % ============= Packages =============
 
 % Dokumentinformationen
 \usepackage[
-	pdftitle={What A Great Title},
+	pdftitle={\workTitle},
 	pdfsubject={},
-	pdfauthor={Thomas Magnum},
+	pdfauthor={\studentFirstName \studentLastName},
 	pdfkeywords={}
 	pdftex=true, 
 	colorlinks=true,
@@ -47,12 +53,12 @@
 % Standard Packages
 \usepackage[utf8]{inputenc}
 
-% deutsch
-% \usepackage[ngerman]{babel}
-% \usepackage[ngerman, num]{isodate}
-
-% english
-\usepackage[english]{babel}
+% Switch the Language
+\ifuseGermanVersion
+	\usepackage[ngerman]{babel}	% German
+\else
+	\usepackage[english]{babel} % English
+\fi
 
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -110,6 +116,21 @@
 % \usepackage{media9}
 % \usepackage{menukeys}
 
+\usepackage[labelfont=it, labelsep=period, format=plain,justification=raggedright, singlelinecheck=false]{caption}
+\captionsetup[figure]{justification=centering}
+\definecolor{light-gray}{gray}{0.85}
+
+% Switch between German and English based on the Settingx.tex. file
+\usepackage{ifthen}
+
+%\captionsetup[listing]{
+%  labelsep = newline,
+%  textfont = sc, 
+%  name = LISTING, 
+%  justification=justified,
+%  singlelinecheck=false,%%%%%%% a single line is centered by default
+%  labelsep=colon,%%%%%%
+%  skip = \medskipamount}
 
 % =============== BlockDiagram Drawing Config
 \usetikzlibrary{shapes,arrows}
@@ -135,28 +156,8 @@
 % ============================================
 
 % -- Settings für Code abbildungen
-% \usepackage{listings}
-
-% \definecolor{dkgreen}{rgb}{0,0.6,0}
-% \definecolor{gray}{rgb}{0.5,0.5,0.5}
-% \definecolor{mauve}{rgb}{0.58,0,0.82}
-
-% \lstset{frame=tb,
-%   language=Java,
-%   aboveskip=3mm,
-%   belowskip=3mm,
-%   showstringspaces=false,
-%   columns=flexible,
-%   basicstyle={\small\ttfamily},
-%   numbers=none,
-%   numberstyle=\tiny\color{gray},
-%   keywordstyle=\color{blue},
-%   commentstyle=\color{dkgreen},
-%   stringstyle=\color{mauve},
-%   breaklines=true,
-%   breakatwhitespace=true
-%   tabsize=3
-% }
+\usepackage{listings,lstautogobble}
+\lstset{backgroundcolor=\color{light-gray},frame=single, framerule=0pt, showspaces=false, showtabs=false, numbers=left, numbersep=5pt, breaklines=false, autogobble=true, language=C++}
 
 % Setze arial font
 \usepackage[scaled]{uarial}
@@ -172,30 +173,27 @@
 \setlength{\parindent}{0pt}
 
 % ============= Kopf- und Fußzeile =============
-\pagestyle{fancy}
-%
-\renewcommand{\chaptermark}[1]{%
-\markboth{\thechapter.\ #1}{}}
 
-\lhead{\leftmark}
-\chead{}
-\rhead{}
-% \rhead{\slshape \thechapter }
-%%
-\lfoot{}
-\cfoot{}
-\rfoot{\thepage}
-%%
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0pt}
+%\renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\footrulewidth}{0pt}
 
-% ============= Remove first Page======
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter~ #1}{}}
 
-\usepackage{atbegshi}% http://ctan.org/pkg/atbegshi
-\AtBeginDocument{\AtBeginShipoutNext{\AtBeginShipoutDiscard}}
+\fancypagestyle{icmt-fancy}{%
+  \fancyhf{}% Clear header and footer
+  \fancyhead[L]{\leftmark}
+  \fancyfoot[R]{\thepage}% Custom footer
+  \renewcommand{\headrulewidth}{0.4pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.0pt}% Line at the footer visible
+}
 
-%======================================
-
+% Redefine the plain page style
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[R]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+  \renewcommand{\footrulewidth}{0.0pt}% Line at the footer visible
+}
 
 % ============= Package Einstellungen & Sonstiges ============= 
 
@@ -208,9 +206,14 @@
 % ============= Dokumentbeginn =============
 
 \begin{document}
-% SOMETHING IS WRONG HERE.
-\include{01_titel}
-\include{01_titel}
+
+% Select the right main page ;-)
+\ifuseGermanVersion
+	\include{TemplateElements/TitelPage_de}
+\else
+	\include{TemplateElements/TitelPage_en}
+\fi
+
 % \part im Inhaltsverzeichnis nicht nummerieren
 \makeatletter
 \let\partbackup\l@part
@@ -220,13 +223,18 @@
 \pagenumbering{Roman}
 
 \newpage
+\ifuseGermanVersion
+	\include{TemplateElements/a_Erklaerung}
+\else
+	\include{TemplateElements/a_Declaration}
+\fi
 
-\include{02_Erklaerung}
 \newpage
-\include{03_zusammenfassung}
+\include{Chapters/b_Abstract}
+\include{Chapters/b_Kurzfassung}
 
 \newpage
-\pagestyle{fancy}
+
 %Inhaltsverzeichnis
 \tableofcontents
 
@@ -235,32 +243,72 @@
 \pagenumbering{arabic}
 
 % pagestyle für gesamtes Dokument aktivieren
-\pagestyle{fancy}
-
+\pagestyle{icmt-fancy}
 \newpage
+
+% /*================================
+% =            EXAMPLE            =
+% ================================*/
+
+% Delete this include at the end
+\include{Example}
 
 % /*================================
 % =            CONTENTS            =
 % ================================*/
 
-\include{01_chapter1}
+\include{Chapters/01_Introduction}
+\include{Chapters/02_Method}
+\include{Chapters/03_Results}
+\include{Chapters/04_Discussion}
+\include{Chapters/05_Conclusion}
 
-\include{02_chapter2}
-
-\include{conclusion}
-
-\begin{appendix}
-\include{someAppendix}
-\end{appendix}
-
-%Verzeichnis aller Bilder
-\newpage
-\listoffigures
+\pagestyle{plain} 
 
 %Literaturverzeichnis
-\newpage
-% unsrtdin
 \bibliographystyle{apalike}
-%\bibliography{BAKK2.bib}
-\bibliography{Library01}
+\bibliography{Bibliography.bib}
+
+% Bilderverzeichnis
+\newpage
+\listoffigures
+% Tableverzeichnis
+\newpage
+\listoftables
+%Codelistingsverzeichnis
+\newpage
+\lstlistoflistings
+\newpage
+
+% ============================================
+
+
+\include{Chapters/Appendix}
+
+
+% ============================================
+
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
