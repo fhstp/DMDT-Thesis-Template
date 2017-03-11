@@ -34,34 +34,94 @@
 
 \vspace{1cm}
 
-
-\LARGE{Diplomarbeit}
+\ifuseBachelorDigitalMediaTechnologiesOne
+	\LARGE{Research Paper}
+\else
+	\ifuseBachelorDigitalMediaTechnologiesTwo
+		\LARGE{Bachelorarbeit}
+\else
+	\ifuseMasterDigitalMediaTechnologies
+		\LARGE{Diplomarbeit}
+\else
+	\ifuseMasterDigitalHealthCare
+		\LARGE{Masterarbeit}
+    \else
+        \LARGE{YOU HAVE TO CHOOSE THE PROGRAM TYPE IN THE SETTINGS!!!}
+  	\fi
+\fi
+\fi
+\fi
 
 
 \vspace{1.5cm}
-
-\fontsize{11pt}{15pt}\selectfont Ausgef\"uhrt zum Zweck der Erlangung des akademischen Grades\\
-\textbf{Dipl.-ing.f\"ur technisch-wissenschaftliche Berufe}
+\ifuseBachelorDigitalMediaTechnologiesOne
+	\fontsize{11pt}{15pt}\selectfont Bachelor Course on Media Technology\\
+at St. P\"{o}lten University of Applied Sciences\\  
+\else
+	\ifuseBachelorDigitalMediaTechnologiesTwo
+		\fontsize{11pt}{15pt}\selectfont Bachelor-Studiengang Medientechnik\\
+Fachhochschule St. P\"{o}lten\\  
+\else
+	\ifuseMasterDigitalMediaTechnologies
+		\fontsize{11pt}{15pt}\selectfont Ausgef\"uhrt zum Zweck der Erlangung des akademischen Grades\\
+		\textbf{Dipl.-ing.für technisch-wissenschaftliche Berufe}
+\else
+	\ifuseMasterDigitalHealthCare
+    	\fontsize{11pt}{15pt}\selectfont Ausgeführt zum Zweck der Erlangung des akademischen Grades\\
+		\textbf{Master of Science in Engineering (MSc)}
+    \else
+        \LARGE{YOU HAVE TO CHOOSE THE PROGRAM TYPE IN THE SETTINGS!!!}
+  	\fi
+\fi
+\fi
+\fi
 
 \vspace{6mm}
 
-am Masterstudiengang Digitale Medientechnologien an der\\ 
-Fachhochschule St. P\"olten, \textbf{Vertiefungsrichtung \specialization} 
+\ifuseMasterDigitalMediaTechnologies
+	am Masterstudiengang Digitale Medientechnologien an der\\ 
+Fachhochschule St. Pölten, \textbf{Vertiefungsrichtung \specialization} 
+\else
+	\ifuseMasterDigitalHealthCare
+		am Masterstudiengang Digital Healthcare\\ 
+an der Fachhochschule St. Pölten
+    \else
+        
+  	\fi
+\fi
 
 \vspace{1.5cm}
-
-Ausgef\"uhrt von:\\ 
+\ifuseBachelorDigitalMediaTechnologiesOne
+	Submitted by:
+    
+\else
+	Ausgef\"uhrt von:\\ 
+\fi
 \fontsize{15pt}{15pt}\selectfont
 \textbf{\studentFirstName\ \studentLastName} \\
 \fontsize{11pt}{15pt}\selectfont
 \studentId
 
 \vspace{2cm}
-
+\ifuseBachelorDigitalMediaTechnologiesOne
+	\begin{tabular}{lll}
+    Advisor: & & \advisorPreTitle\ \advisoFirstName\ 		\advisorLastName, \advisorPosTitle\\
+    %Zweitbegutachter/in: & & [Titel Vorname Zuname]
+    \end{tabular}
+\else
+	\ifuseBachelorDigitalMediaTechnologiesTwo
+		\begin{tabular}{lll}
+        Betreuer: & & \advisorPreTitle\ \advisoFirstName\ \advisorLastName, \advisorPosTitle\\
+        %Zweitbegutachter/in: & & [Titel Vorname Zuname]
+		\end{tabular}
+\else
 \begin{tabular}{lll}
-Betreuer and Erstbegutachter: & \advisorPreTitle\ \advisoFirstName\ \advisorLastName, \advisorPosTitle\\
+Betreuer und Erstbegutachter: & \advisorPreTitle\ \advisoFirstName\ \advisorLastName, \advisorPosTitle\\
 Zweitbegutachter: & \assessorPreTitle\ \assessorFirstName\ \assessorLastName, \assessorPosTitle\\
 \end{tabular}
+
+\fi
+\fi
 
 \vspace{2cm}
 

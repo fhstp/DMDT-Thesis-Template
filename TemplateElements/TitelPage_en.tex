@@ -34,21 +34,65 @@
 
 \vspace{1cm}
 
+\ifuseBachelorDigitalMediaTechnologiesOne
+	\LARGE{Research Paper}
+\else
+	\ifuseBachelorDigitalMediaTechnologiesTwo
+		\LARGE{Bachelor Thesis}
+\else
+	\ifuseMasterDigitalMediaTechnologies
+		\LARGE{Diploma Thesis}
+\else
+	\ifuseMasterDigitalHealthCare
+		\LARGE{Master Thesis}
+    \else
+        \LARGE{YOU HAVE TO CHOOSE THE PROGRAM TYPE IN THE SETTINGS!!!}
+  	\fi
+\fi
+\fi
+\fi
+  
+\vspace{1.3cm}
+\ifuseBachelorDigitalMediaTechnologiesOne
+	\fontsize{11pt}{15pt}\selectfont Bachelor Course on Media Technology\\
+at St. Pölten University of Applied Sciences\\  
+\else
+	\ifuseBachelorDigitalMediaTechnologiesTwo
+		\fontsize{11pt}{15pt}\selectfont Bachelor Course on Media Technology\\
+at St. Pölten University of Applied Sciences\\  
+\else
+	\ifuseMasterDigitalMediaTechnologies
+		\fontsize{11pt}{15pt}\selectfont For attainment of the academic degree of\\
+		\textbf{Dipl.-ing.für technisch-wissenschaftliche Berufe}
+\else
+	\ifuseMasterDigitalHealthCare
+    	\fontsize{11pt}{15pt}\selectfont For attainment of the academic degree of\\
+		\textbf{Master of Science in Engineering (MSc)}
+    \else
+        \LARGE{YOU HAVE TO CHOOSE THE PROGRAM TYPE IN THE SETTINGS!!!}
+  	\fi
+\fi
+\fi
+\fi
 
-\LARGE{Diploma Thesis}
+\vspace{4mm}
+ 
+\ifuseMasterDigitalMediaTechnologies
+	in the Masters Course Digital Media Technologies at St. Pölten\\ 
+University of Applied Sciences, \textbf{specialized area \specialization}
+\else
+	\ifuseMasterDigitalHealthCare
+		in the Masters Course Digital Healthcare\\ 
+at St. Pölten University of Applied Sciences
+    \else
+  	\fi
+\fi
 
 
-\vspace{1.5cm}
 
-\fontsize{11pt}{15pt}\selectfont For attainment of the academic degree of\\
-\textbf{Dipl.-ing.f\"ur technisch-wissenschaftliche Berufe}
 
-\vspace{6mm}
 
-in the Masters Course Digital Media Technology at St. P\"olten\\ 
-University of Applied Sciences, \textbf{specialized area \specialization} 
-
-\vspace{1.5cm}
+\vspace{1.3cm}
 
 Submitted by:\\ 
 \fontsize{15pt}{15pt}\selectfont
@@ -56,14 +100,28 @@ Submitted by:\\
 \fontsize{11pt}{15pt}\selectfont
 \studentId
 
-\vspace{2cm}
+\vspace{1.8cm}
+\ifuseBachelorDigitalMediaTechnologiesOne
+	\begin{tabular}{lll}
+    Advisor: & & \advisorPreTitle\ \advisoFirstName\ 		\advisorLastName, \advisorPosTitle\\
+    %Zweitbegutachter/in: & & [Titel Vorname Zuname]
+    \end{tabular}
+\else
+	\ifuseBachelorDigitalMediaTechnologiesTwo
+		\begin{tabular}{lll}
+        Advisor: & & \advisorPreTitle\ \advisoFirstName\ \advisorLastName, \advisorPosTitle\\
+        %Zweitbegutachter/in: & & [Titel Vorname Zuname]
+		\end{tabular}
+\else
+  \begin{tabular}{lll}
+  Advisor and First Assessor: & \advisorPreTitle\ \advisoFirstName\ \advisorLastName, \advisorPosTitle\\
+  Second Assessor: & \assessorPreTitle\ \assessorFirstName\ \assessorLastName, \assessorPosTitle\\
+  \end{tabular}
 
-\begin{tabular}{lll}
-Advisor and First Assessor: & \advisorPreTitle\ \advisoFirstName\ \advisorLastName, \advisorPosTitle\\
-Second Assessor: & \assessorPreTitle\ \assessorFirstName\ \assessorLastName, \assessorPosTitle\\
-\end{tabular}
+\fi
+\fi
 
-\vspace{2cm}
+\vspace{1.8cm}
 
 
 \large{\place, \dateDay.\dateMonth.\dateYear}
