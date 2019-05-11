@@ -34,33 +34,66 @@
 
 \vspace{1cm}
 
-\ifuseBachelorDigitalMediaTechnologiesOne
-	\LARGE{Research Paper}
+
+\ifnum\ifuseBachelorMediaTechnologiesOne 1
+\else\ifuseBachelorSmartEngineeringOne 1
+\else0
+\fi\fi
+=1 
+   	\LARGE{Research Paper}
 \else
-	\ifuseBachelorDigitalMediaTechnologiesTwo
-		\LARGE{Bachelorarbeit}
+	\ifnum\ifuseBachelorMediaTechnologiesTwo 2
+	\else\ifuseBachelorSmartEngineeringTwo 2
+\else0
+\fi\fi
+=2
+	\LARGE{Bachelorarbeit}
 \else
 	\ifuseMasterDigitalMediaTechnologies
 		\LARGE{Diplomarbeit}
-\else
+	\else
 	\ifuseMasterDigitalHealthCare
 		\LARGE{Masterarbeit}
     \else
         \LARGE{YOU HAVE TO CHOOSE THE PROGRAM TYPE IN THE SETTINGS!!!}
   	\fi
-\fi
-\fi
-\fi
+\fi\fi\fi
+
+% \ifuseBachelorMediaTechnologiesOne
+% 	\LARGE{Research Paper}
+% \else
+% 	\ifuseBachelorSmartEngineeringOne
+%     	\LARGE{Research Paper}
+% \else
+% 	\ifuseBachelorMediaTechnologiesTwo
+% 		\LARGE{Bachelorarbeit}
+% \else
+% 	\ifuseMasterDigitalMediaTechnologies
+% 		\LARGE{Diplomarbeit}
+% \else
+% 	\ifuseMasterDigitalHealthCare
+% 		\LARGE{Masterarbeit}
+%     \else
+%         \LARGE{YOU HAVE TO CHOOSE THE PROGRAM TYPE IN THE SETTINGS!!!}
+%   	\fi
+% \fi
+% \fi
+% \fi
+% \fi
 
 
 \vspace{1.3cm}
-\ifuseBachelorDigitalMediaTechnologiesOne
+\ifuseBachelorMediaTechnologiesOne
 	\fontsize{11pt}{15pt}\selectfont Bachelor Course on Media Technology\\
 at St. Pölten University of Applied Sciences\\  
 \else
-	\ifuseBachelorDigitalMediaTechnologiesTwo
+	\ifuseBachelorMediaTechnologiesTwo
 		\fontsize{11pt}{15pt}\selectfont Bachelor-Studiengang Medientechnik\\
 Fachhochschule St. Pölten\\  
+\else
+	\ifuseBachelorSmartEngineeringOne
+    	\fontsize{11pt}{15pt}\selectfont Bachelor-Studiengang Smart Engineering\\
+Fachhochschule St. Pölten\\ 
 \else
 	\ifuseMasterDigitalMediaTechnologies
 		\fontsize{11pt}{15pt}\selectfont Ausgeführt zum Zweck der Erlangung des akademischen Grades\\
@@ -72,6 +105,7 @@ Fachhochschule St. Pölten\\
     \else
         \LARGE{YOU HAVE TO CHOOSE THE PROGRAM TYPE IN THE SETTINGS!!!}
   	\fi
+\fi
 \fi
 \fi
 \fi
@@ -91,7 +125,7 @@ an der Fachhochschule St. Pölten
 \fi
 
 \vspace{1.3cm}
-\ifuseBachelorDigitalMediaTechnologiesOne
+\ifuseBachelorMediaTechnologiesOne
 	Submitted by:
     
 \else
@@ -103,13 +137,13 @@ an der Fachhochschule St. Pölten
 \studentId
 
 \vspace{1.8cm}
-\ifuseBachelorDigitalMediaTechnologiesOne
+\ifuseBachelorMediaTechnologiesOne
 	\begin{tabular}{lll}
     Advisor: & & \advisorPreTitle\ \advisoFirstName\ 		\advisorLastName, \advisorPosTitle\\
     %Zweitbegutachter/in: & & [Titel Vorname Zuname]
     \end{tabular}
 \else
-	\ifuseBachelorDigitalMediaTechnologiesTwo
+	\ifuseBachelorMediaTechnologiesTwo
 		\begin{tabular}{lll}
         Betreuer: & & \advisorPreTitle\ \advisoFirstName\ \advisorLastName, \advisorPosTitle\\
         %Zweitbegutachter/in: & & [Titel Vorname Zuname]

@@ -1,7 +1,13 @@
 % ========== Template by IC\M/T Institute of Creative\Media/Technologies =============
-% ==========  M. Wagner and K. Blumenstein, N. Thuer 2017         ============= 
+% ==========  M. Wagner and K. Blumenstein, N. Thuer 2017 ============= 
 % ==========  Based on the LaTeX Thesis Template for the University of Applied Sciences St.Pölten by P. Lechner https://github.com/hrtlacek/ThesisTemplate-FH-StP        ============= 
 
+%----------------------------------------------------------------
+% TODO List for KB / MW
+
+
+
+%----------------------------------------------------------------
 
 %Dokumentklasse without end dot ;-)
 \documentclass[a4paper,11pt, numbers=noenddot]{scrreprt}
@@ -59,20 +65,31 @@
 \else
 	\usepackage[english]{babel} % English
 \fi
+\usepackage{csquotes}
 
 \usepackage[T1]{fontenc}
-\usepackage{graphicx}
+%\usepackage{graphicx}
 \usepackage{graphicx, subfigure}
-%setze pfad fuer Bilder
-\graphicspath{{img/}}
+%Set path for images
+%\graphicspath{{img/}}
 \usepackage{fancyhdr}
 \usepackage{lmodern}
 \usepackage{color}
 \usepackage{transparent}
 
 % Citation style
-\usepackage[comma,authoryear]{natbib}
+%\usepackage[comma,authoryear]{natbib}
 %\usepackage{natbib}
+
+\usepackage[backend=biber, style=apa, citestyle=authoryear, sorting=ynt]{biblatex}
+%\usepackage[backend=biber, style=apa, citestyle=authoryear, sorting=ynt]{biblatex}
+\ifuseGermanVersion
+    \DeclareLanguageMapping{ngerman}{ngerman-apa}
+\else
+    \DeclareLanguageMapping{english}{english-apa}
+\fi
+
+\addbibresource{biblatex.bib}
 
 % zusätzliche Schriftzeichen der American Mathematical Society
 \usepackage{amsfonts}
@@ -92,14 +109,14 @@
 \usepackage{float}
 
 %iPython packages:
-\usepackage{graphicx} % Used to insert images
+%\usepackage{graphicx} % Used to insert images
 \usepackage{adjustbox} % Used to constrain images to a maximum size 
 \usepackage{color} % Allow colors to be defined
 \usepackage{enumerate} % Needed for markdown enumerations to work
 \usepackage{geometry} % Used to adjust the document margins
 \usepackage{amsmath} % Equations
 \usepackage{amssymb} % Equations
-\usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+%\usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
 % \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
 \usepackage{fancyvrb} % verbatim replacement that allows latex
 \usepackage{grffile} % extends the file name processing of package graphics 
@@ -160,7 +177,7 @@
 \lstset{backgroundcolor=\color{light-gray},frame=single, framerule=0pt, showspaces=false, showtabs=false, numbers=left, numbersep=5pt, breaklines=false, autogobble=true, language=C++}
 
 % Setze arial font
-\usepackage[scaled]{uarial}
+\usepackage[scaled]{helvet}
 \renewcommand*{\familydefault}{\sfdefault}
 
 % FH-grünBlau
@@ -168,12 +185,11 @@
 % FH-grünBlau 2
 \definecolor{FH2}{rgb}{0.0392, 0.666, 0.549}
 
-
 % nicht einrücken nach Absatz
-\setlength{\parindent}{0pt}
+\setlength{\parindent}{0cm}
 
 % Paragraph-Abstand
-\setlength{\parskip}{0.5em}
+\setlength{\parskip}{0.3cm}
 
 % ============= Kopf- und Fußzeile =============
 
@@ -205,6 +221,7 @@
 
 %römische Aufzählungen mit \RM{Zahl}
 \newcommand{\RM}[1]{\MakeUppercase{\romannumeral #1}}
+
 
 % ============= Dokumentbeginn =============
 
@@ -269,8 +286,15 @@
 \pagestyle{plain} 
 
 %Literaturverzeichnis
-\bibliographystyle{apalike}
-\bibliography{Bibliography.bib}
+\newpage
+\printbibliography
+%\ifuseGermanVersion
+%	\bibliographystyle{fhstp-apalike}
+%\else
+%    \bibliographystyle{apa-good}
+%\fi
+
+%\bibliography{Bibliography.bib}
 
 % Bilderverzeichnis
 \newpage

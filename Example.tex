@@ -30,30 +30,33 @@ You can make lists with automatic numbering \dots
 \item[Word] Definition
 \item[Concept] Explanation
 \item[Idea] Text
-\end{description}\section{Section}
+\end{description}
+
+\section{Section}
 
 You have to write text between each headline.
 
 \section{Citation}
 
-This part describes the 3 types of citations which are possible:
+This part describes the three types of citations which are possible:
 
 \section{Direct Citation}
 
 The maximum for a direct citation is a ${1/2}$ page.
 
 \begin{quotation}
-	Overview first, zoom and filter, then details-on-demand~\citep{shneiderman_eyes_1996}
+	Overview first, zoom and filter, then details-on-demand
+	\autocite{shneiderman_eyes_1996}
 \end{quotation}
 
 \section{Floating Text Citation}
 
-\citet{shneiderman_eyes_1996} defined the Visual Information Seeking Mantra as ``Overview first, zoom and filter, then details-on-demand''. 
-\citep{kahneman_thinking_2012}
+\textcite{shneiderman_eyes_1996} defined the Visual Information Seeking Mantra as ``Overview first, zoom and filter, then details-on-demand''.
 
 \section{Indirect Citation}
 
-Some text which summarizes a paper or a book chapter. This could take several lines~\citep{shneiderman_eyes_1996}. 
+Some text which summarizes a paper or a book chapter. This could take several lines.
+Find attached a citation of a website~\autocite{kaley_match_2018}.
 
 \newpage
 \section{Figures}
@@ -65,6 +68,22 @@ To place a figure use the following code example
   \includegraphics[width=1\columnwidth]{Figures/Example}
   \caption{Interactive data exploration with multiple devices.}
   \label{fig:example}
+\end{figure}
+
+
+
+
+\begin{figure}[h]
+    \centering
+    \subfigure[Figure A]{
+    	\label{fig:a}
+        \includegraphics[width=60mm]{Figures/Example}
+     }
+	\subfigure[Figure B]{
+    	\label{fig:b}
+        \includegraphics[width=60mm]{Figures/Example}
+     }
+    \caption{Wearables worn for experiments 1, 2, and 3.}\label{fig:figure2}
 \end{figure}
 
 Refer to a figure in the following forms:\\
@@ -85,7 +104,7 @@ else
 
 Now lets take a look at Listing~\ref{lst:test}.
 
-\newpage
+
 \section{Table}
 
 \begin{table}[ht!]
@@ -118,9 +137,7 @@ S_n = \frac{1}{n}\sum_{i}^{n} X_i
 \label{eq:test}
 \end{equation}
 
-
 This is the reference to equation~\ref{eq:test}.      
-
 
 denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
 
